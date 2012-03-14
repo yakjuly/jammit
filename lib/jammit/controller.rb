@@ -68,7 +68,7 @@ module Jammit
     def parse_request
       pack       = params[:package]
       if params[:extension] =~ /(.*+)\.js$/
-        @exntesion = $1.to_sym
+        @extension = $1.to_sym
       else
         @extension = params[:extension].to_sym
       end
