@@ -67,8 +67,8 @@ module Jammit
     # :mhtml) from the incoming URL.
     def parse_request
       pack       = params[:package]
-      if params[:extension] =~ /.*+\.js$/
-        @exntesion = params[:extension][/(.*+)\.js/, 1].to_sym
+      if params[:extension] =~ /(.*+)\.js$/
+        @exntesion = $1.to_sym
       else
         @extension = params[:extension].to_sym
       end
