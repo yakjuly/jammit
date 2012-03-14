@@ -67,7 +67,12 @@ module Jammit
     # :mhtml) from the incoming URL.
     def parse_request
       pack       = params[:package]
-      @extension = params[:extension].to_sym
+      if params[:extension] =~ /.*+\.js$/
+        @exntesion = params[:extension][/(.*+)\.js/, 1].to_sym
+      else
+        @extension = params[:extension].to_sym
+      end
+      
       raise PackageNotFound unless (VALID_FORMATS + [Jammit.template_extension.to_sym]).include?(@extension)
       if Jammit.embed_assets
         suffix_match = pack.match(SUFFIX_STRIPPER)
